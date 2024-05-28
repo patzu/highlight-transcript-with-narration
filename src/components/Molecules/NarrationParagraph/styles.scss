@@ -1,0 +1,35 @@
+.m-narration {
+  line-height: 1.8;
+
+  /**
+  * Initial animation state
+  */
+  &.-ready {
+    .a-narrationSentence {
+      animation-name: none;
+    }
+  }
+
+  /**
+  * Paused animation state
+  */
+  &.-paused {
+    .a-narrationSentence {
+      animation-play-state: paused !important;
+    }
+  }
+
+  /**
+   * Playing animation state
+   */
+  &.-playing {
+    .a-narrationSentence:first-child {
+      animation-play-state: running;
+    }
+  }
+
+  .a-container {
+    padding-top: 110px;
+    padding-bottom: 110px;
+  }
+}

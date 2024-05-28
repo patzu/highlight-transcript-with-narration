@@ -1,0 +1,46 @@
+@keyframes highlight {
+  0% {
+    background-position: 0 0;
+  }
+  
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.a-narrationSentence {
+  background: linear-gradient(to right, transparent 50%, pink 50%);
+  color: black;
+  background-size: 200%;
+  background-position: 0 0;
+  display: inline;
+  animation-name: highlight;
+  animation-play-state: paused;
+  animation-direction: normal;
+  animation-timing-function: linear;
+  padding: 6px 0;
+  white-space: normal;
+
+  /**
+   * Reset animation so it will re-animate.
+   */
+  &.-isReset {
+    animation-name: none;
+  }
+
+  /**
+   * Once a sentence is read, set it's background colour to the appropriate pink. This is just to
+   * reduce the number if linear gradients being renderd.
+   */
+  &.-isRead {
+    background: pink;
+    animation-name: none;
+
+    /**
+     * Once a sentence is marked as 'isRead', kick off the next sentences animation.
+     */
+    & + .a-narrationSentence {
+      animation-play-state: running;
+    }
+  }
+}
